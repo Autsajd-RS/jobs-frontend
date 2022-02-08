@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import build from 'next/dist/build';
 import { REHYDRATE } from 'redux-persist';
 
 export interface CounterState {
@@ -25,6 +24,10 @@ export const counterSlice = createSlice({
         incrementByAmount: (state, action: PayloadAction<number>) => ({
             ...state,
             value: (state.value += action.payload)
+        }),
+        setValue: (state, action: PayloadAction<number>) => ({
+            ...state,
+            value: action.payload
         })
     },
     extraReducers: (builder) => {
@@ -33,11 +36,11 @@ export const counterSlice = createSlice({
 
             return {
                 ...state
-            }
-        })
+            };
+        });
     }
 });
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { increment, decrement, incrementByAmount, setValue } = counterSlice.actions;
 
 export default counterSlice.reducer;
