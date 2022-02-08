@@ -2,6 +2,7 @@ import { Button, Link } from '@mui/material';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import StyledButton from '../components/StyledButton';
 import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
@@ -22,6 +23,7 @@ const Home: NextPage = () => {
                 </h1>
 
                 <Button variant="contained">Contained</Button>
+                <StyledButton>Test</StyledButton>
             </main>
 
             <footer className={styles.footer}>
