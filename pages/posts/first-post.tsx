@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
 type User = {
@@ -22,6 +21,7 @@ const FirstPost: React.FC<FirstPostProps> = ({ data }) => {
                     <p>{item.age}</p>
                 </div>
             ))}
+            <Link href="/">Go back</Link>
         </>
     );
 };

@@ -5,6 +5,8 @@ import { EmotionCache } from '@emotion/cache';
 import { CacheProvider, ThemeProvider } from '@emotion/react';
 import lightTheme from '../styles/theme/lightTheme';
 import { CssBaseline } from '@mui/material';
+import { Provider } from 'react-redux';
+import { store } from '../app-redux/store';
 interface MyAppProps extends AppProps {
     emotionCache?: EmotionCache;
 }
@@ -15,12 +17,14 @@ const MyApp = (props: MyAppProps) => {
     const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
     return (
-        <CacheProvider value={emotionCache}>
-            <ThemeProvider theme={lightTheme}>
-                <CssBaseline />
-                <Component {...pageProps} />
-            </ThemeProvider>
-        </CacheProvider>
+        <Provider store={store}>
+            <CacheProvider value={emotionCache}>
+                <ThemeProvider theme={lightTheme}>
+                    <CssBaseline />
+                    <Component {...pageProps} />
+                </ThemeProvider>
+            </CacheProvider>
+        </Provider>
     );
 };
 
